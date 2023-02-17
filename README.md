@@ -4,8 +4,6 @@
 
 Deploy your own functions in less than a minute, read the #Deployment section.
 
-**एक मिनट से भी कम समय में इसे deploy करें , उस के लिए #Deployment अनुभाग पढ़ें।**
-
 Currently using Netlify functions, which has a genorous limit of calls you can make, mostly enough for personal use, or small scale use, for faster and much more users, a dedicated server (code on original repo) maybe preferable :D
 
 The original and this fork, both are, data compression service used by [Bandwidth Hero](https://github.com/ayastreb/bandwidth-hero) browser extension. It compresses (optionally grayscale) given image to low-res [WebP](https://developers.google.com/speed/webp/) or JPEG image.
@@ -22,7 +20,7 @@ I can't provide you with my deployment, since I have the free tier, and that has
 
 You need to deploy the functions to Netlify:
 
-[![Deploy](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/adi-g15/bandwidth-hero-proxy)
+[![Deploy](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/t0ny54/bandwidth-hero-proxy)
 
 Then, in the **Data Compression Service** in Bandwidth Hero extension, add `https://your-netlify-domain.netlify.app/api/index`, and you are good to go.
 
