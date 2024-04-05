@@ -1,23 +1,13 @@
-"use strict";
-const MIN_COMPRESS_LENGTH = 1024
-const MIN_TRANSPARENT_COMPRESS_LENGTH = MIN_COMPRESS_LENGTH * 100
+const MIN_COMPRESS_LENGTH = 1024;
+const MIN_TRANSPARENT_COMPRESS_LENGTH = 102400;
 
-function shouldCompress(req) {
-  const { originType, originSize, webp } = req.params
-
-  if (!originType.startsWith('image')) return false;
-  if (originSize === 0) return false;
-  if (req.headers.range) return false;
-  if (webp && originSize < MIN_COMPRESS_LENGTH) return false;
-  if (
-    !webp &&
-    (originType.endsWith('png') || originType.endsWith('gif')) &&
-    originSize < MIN_TRANSPARENT_COMPRESS_LENGTH
-  ) {
-    return false;
-  }
-
-  return true;
+function shouldCompress(imageType, size, isTransparent) {
+  return !(
+    !imageType.startsWith("image") ||
+    size === 0 ||
+    (isTransparent && size < MIN_COMPRESS_LENGTH) ||
+    (!isTransparent && (imageType.endsWith("png") || imageType.endsWith("gif")) && size < MIN_TRANSPARENT_COMPRESS_LENGTH)
+  );
 }
 
-module.exports = shouldCompress
+module.exports = shouldCompress;
